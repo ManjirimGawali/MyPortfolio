@@ -52,7 +52,7 @@ const projects = [
     tech: ["React",  "Django",  "DRF", "PyQt5","Chart.js","Tailwind CSS"],
     color: "from-[#F7E7DE] to-[#F3D8CC]",
     github: "https://github.com/ManjirimGawali/CEPV-Chemical-Equipment-Parameter-Visualizer",
-    live: "#",
+    live: "cepv-visualizer.onrender.com",
   },
 ];
 

@@ -199,7 +199,7 @@ export function Sidebar() {
               <div className="flex flex-col items-center text-center mt-8 mb-12">
                 <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-primary/20 mb-4">
                   <Image
-                    src="/profile.jpg"
+                    src="/images/manjiriphoto.jpg"
                     alt="Manjiri Gawali"
                     fill
                     className="object-cover"
