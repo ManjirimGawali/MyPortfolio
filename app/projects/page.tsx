@@ -21,19 +21,9 @@ const projects = [
     github: "https://github.com/ManjirimGawali/Socialize",
     live: "https://socialize-black.vercel.app/",
   },
+  
   {
     id: 2,
-    name: "Remote Health Monitoring System",
-    description: "Real time health tracking using sensors and Flutter",
-    fullDescription:
-      "An IoT-based health monitoring system that tracks vital signs in real-time using ESP32 sensors. The Flutter mobile application displays health metrics including heart rate, temperature, and oxygen levels. Data is stored and synchronized using Firebase for seamless access across devices.",
-    tech: ["Flutter", "Firebase", "ESP32", "IoT"],
-    color: "from-emerald-500/20 to-teal-500/20",
-    github: "https://github.com/ManjirimGawali/Remote-health-monitoring",
-    live: "#",
-  },
-  {
-    id: 3,
     name: "Banking System",
     description: "Full Stack Banking Platform",
     fullDescription:
@@ -44,7 +34,7 @@ const projects = [
     live: "#",
   },
   {
-    id: 4,
+    id: 3,
     name: "CEPV",
     description: "Chemical Equipment Parameter Visualizer",
     fullDescription:
@@ -53,6 +43,18 @@ const projects = [
     color: "from-[#F7E7DE] to-[#F3D8CC]",
     github: "https://github.com/ManjirimGawali/CEPV-Chemical-Equipment-Parameter-Visualizer",
     live: "cepv-visualizer.onrender.com",
+  },
+
+  {
+    id: 4,
+    name: "Remote Health Monitoring System",
+    description: "Real time health tracking using sensors and Flutter",
+    fullDescription:
+      "An IoT-based health monitoring system that tracks vital signs in real-time using ESP32 sensors. The Flutter mobile application displays health metrics including heart rate, temperature, and oxygen levels. Data is stored and synchronized using Firebase for seamless access across devices.",
+    tech: ["Flutter", "Firebase", "ESP32", "IoT"],
+    color: "from-emerald-500/20 to-teal-500/20",
+    github: "https://github.com/ManjirimGawali/Remote-health-monitoring",
+    live: "#",
   },
 ];
 
