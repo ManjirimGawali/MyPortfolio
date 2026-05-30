@@ -7,13 +7,14 @@ import { PortfolioLayout } from "@/components/portfolio-layout";
 import { PageTransition, ScrollReveal, HoverCard } from "@/components/animations";
 import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/footer";
+import Image from "next/image";
+
 
 const projects = [
   {
     id: 1,
     name: "Socialize",
-    description:
-      "Social media platform with image uploads, likes, comments, profiles and notifications.",
+    image:"images/socializedark.png",
     fullDescription:
       "A full-featured social media application built with modern web technologies. Features include user authentication, image uploads with UploadThing, real-time notifications, likes, comments, user profiles, and a responsive design. The application uses Prisma for database management and Clerk for secure authentication.",
     tech: ["Next.js", "TypeScript", "Prisma", "Clerk", "UploadThing", "PostgreSQL"],
@@ -25,6 +26,7 @@ const projects = [
   {
     id: 2,
     name: "Banking System",
+    image:"/images/bankauth.png",
     description: "Full Stack Banking Platform",
     fullDescription:
       "A comprehensive banking platform with features for account management, fund transfers, transaction history, and secure authentication. Built with React frontend and Node.js backend, using MongoDB for data storage and JWT for secure session management.",
@@ -36,6 +38,7 @@ const projects = [
   {
     id: 3,
     name: "CEPV",
+    image:"/images/cepv.png",
     description: "Chemical Equipment Parameter Visualizer",
     fullDescription:
       "A full-stack analytics platform for chemical equipment datasets with CSV upload, interactive charts, PDF report generation, authentication, and cross-platform support through web and desktop applications.",
@@ -48,6 +51,7 @@ const projects = [
   {
     id: 4,
     name: "Remote Health Monitoring System",
+    image:"images/healthcare.png",
     description: "Real time health tracking using sensors and Flutter",
     fullDescription:
       "An IoT-based health monitoring system that tracks vital signs in real-time using ESP32 sensors. The Flutter mobile application displays health metrics including heart rate, temperature, and oxygen levels. Data is stored and synchronized using Firebase for seamless access across devices.",
@@ -56,6 +60,30 @@ const projects = [
     github: "https://github.com/ManjirimGawali/Remote-health-monitoring",
     live: "#",
   },
+  {
+  id: 5,
+  name: "Meher Bakery",
+  image: "/images/meherhome.png",
+  description:
+    "A premium bakery website featuring a luxury pastel design, animated product showcases, speciality cakes, responsive layouts, and an elegant shopping experience.",
+
+  fullDescription:
+    "Meher Bakery is a modern bakery website built using Next.js and Tailwind CSS. The project focuses on creating a luxurious user experience through soft pastel color palettes, premium UI components, smooth animations, responsive design, product showcases, speciality cakes, contact forms, and interactive navigation. The website includes multiple pages such as Home, About, Products, Speciality Cakes, Contact Us, and Find Us, all designed with a consistent aesthetic and modern frontend practices.",
+
+  tech: [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Responsive Design",
+  ],
+
+  color: "from-pink-500/10 to-purple-500/10",
+
+  github: "https://github.com/ManjirimGawali/Bakery",
+
+  live: "YOUR_VERCEL_LINK",
+}
 ];
 
 export default function ProjectsPage() {
@@ -91,19 +119,56 @@ export default function ProjectsPage() {
               <ScrollReveal key={project.id} delay={index * 0.1}>
                 <HoverCard>
                   <motion.div
-                    className={`relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br ${project.color} bg-card p-8 cursor-pointer group`}
+                    className={`relative
+overflow-hidden
+rounded-[32px]
+bg-white
+border
+border-[#F3E8EF]
+shadow-[0_10px_40px_rgba(0,0,0,0.06)]
+hover:shadow-[0_20px_60px_rgba(0,0,0,0.10)]
+transition-all
+duration-500
+cursor-pointer
+group
+p-8`}
                     onClick={() => setSelectedProject(project)}
                     whileHover={{ scale: 1.01 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                       <div className="flex-1">
-                        <h2 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                          {project.name}
-                        </h2>
-                        <p className="text-muted-foreground mb-4 max-w-xl">
-                          {project.description}
-                        </p>
+                       <h2 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">
+  {project.name}
+</h2>
+
+{/* Project Image */}
+<div className="mb-6
+  overflow-hidden
+  rounded-[24px]
+  border
+  border-[#F1E4ED]
+  bg-white
+  shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+  <Image
+    src={project.image}
+    alt={project.name}
+    width={1200}
+    height={700}
+    className="
+      w-full
+      h-[250px]
+      object-cover
+      transition-transform
+      duration-500
+      group-hover:scale-105
+    "
+  />
+</div>
+
+<p className="text-muted-foreground mb-4 max-w-xl">
+  {project.description}
+</p>
                         <div className="flex flex-wrap gap-2">
                           {project.tech.map((tech) => (
                             <span
