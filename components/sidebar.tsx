@@ -67,7 +67,7 @@ export function Sidebar() {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="text-sm text-primary font-medium mt-1"
           >
-            Full Stack Developer
+            Software Developer
           </motion.p>
           <motion.div
             initial={{ y: 20, opacity: 0 }}

@@ -12,7 +12,31 @@ import Image from "next/image";
 
 const projects = [
   {
-    id: 1,
+  id: 1,
+  name: "Swasthya",
+  image: "images/swasthya.png",
+  fullDescription:
+    "An AI-powered medical assistant that helps users analyze medical reports and receive structured medical insights. The application includes secure authentication, report uploads, OCR-based text extraction, AI-powered analysis, cloud storage, and a scalable backend for processing medical information.",
+  tech: [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Node.js",
+    "Express.js",
+    "Prisma",
+    "PostgreSQL",
+    "Firebase Auth",
+    "Google Document AI",
+    "Gemini API",
+    "Supabase"
+  ],
+  color: "from-emerald-500/20 to-teal-500/20",
+  github: "https://github.com/ManjirimGawali/Svastha-AI-Medical-Assistant",
+  live: "https://svastha-ai-medical-assistant.vercel.app/",
+},
+  
+  {
+    id: 2,
     name: "Socialize",
     image:"images/socializedark.png",
     fullDescription:
@@ -23,20 +47,30 @@ const projects = [
     live: "https://socialize-black.vercel.app/",
   },
   
+ {
+  id: 3,
+  name: "Circle",
+  image: "images/circle.png",
+  fullDescription:
+    "A real-time chat application built with the MERN stack and TypeScript. Circle allows users to securely create accounts, search for other users, start one-on-one conversations, and exchange messages in real time. It includes JWT-based authentication, user profiles, profile picture uploads, online/offline status, and a responsive chat interface powered by Socket.IO.",
+  tech: [
+    "React",
+    "TypeScript",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Mongoose",
+    "Socket.IO",
+    "JWT",
+    "Tailwind CSS",
+    "Cloudinary"
+  ],
+  color: "from-pink-500/20 to-purple-500/20",
+  github: "https://github.com/ManjirimGawali/Circle-A-chat-App",
+  live: "#",
+},
   {
-    id: 2,
-    name: "Banking System",
-    image:"/images/bankauth.png",
-    description: "Full Stack Banking Platform",
-    fullDescription:
-      "A comprehensive banking platform with features for account management, fund transfers, transaction history, and secure authentication. Built with React frontend and Node.js backend, using MongoDB for data storage and JWT for secure session management.",
-    tech: ["React", "Node", "MongoDB", "JWT"],
-    color: "from-amber-500/20 to-orange-500/20",
-    github: "https://github.com/ManjirimGawali/Banking-System",
-    live: "#",
-  },
-  {
-    id: 3,
+    id: 4,
     name: "CEPV",
     image:"/images/cepv.png",
     description: "Chemical Equipment Parameter Visualizer",
@@ -48,18 +82,18 @@ const projects = [
     live: "cepv-visualizer.onrender.com",
   },
 
-  {
-    id: 4,
-    name: "Remote Health Monitoring System",
-    image:"images/healthcare.png",
-    description: "Real time health tracking using sensors and Flutter",
-    fullDescription:
-      "An IoT-based health monitoring system that tracks vital signs in real-time using ESP32 sensors. The Flutter mobile application displays health metrics including heart rate, temperature, and oxygen levels. Data is stored and synchronized using Firebase for seamless access across devices.",
-    tech: ["Flutter", "Firebase", "ESP32", "IoT"],
-    color: "from-emerald-500/20 to-teal-500/20",
-    github: "https://github.com/ManjirimGawali/Remote-health-monitoring",
-    live: "#",
-  },
+  // {
+  //   id: 5,
+  //   name: "Remote Health Monitoring System",
+  //   image:"images/healthcare.png",
+  //   description: "Real time health tracking using sensors and Flutter",
+  //   fullDescription:
+  //     "An IoT-based health monitoring system that tracks vital signs in real-time using ESP32 sensors. The Flutter mobile application displays health metrics including heart rate, temperature, and oxygen levels. Data is stored and synchronized using Firebase for seamless access across devices.",
+  //   tech: ["Flutter", "Firebase", "ESP32", "IoT"],
+  //   color: "from-emerald-500/20 to-teal-500/20",
+  //   github: "https://github.com/ManjirimGawali/Remote-health-monitoring",
+  //   live: "#",
+  // },
   {
   id: 5,
   name: "Meher Bakery",

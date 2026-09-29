@@ -49,12 +49,12 @@ const quickActions = [
 const stats = [
   { value: "5+", label: "Projects Built" },
   { value: "10+", label: "Development Sprints" },
-  { value: "100+", label: "DSA Problems" },
+  { value: "150+", label: "DSA Problems" },
   { value: "24/7", label: "Learning" },
-  { value: "8.92", label: "CGPA" },
+  { value: "8.93", label: "CGPA" },
 ];
 
-const aboutContent = `Hello! I'm Manjiri Gawali, a passionate Full Stack Developer and Computer Science student specializing in Health Informatics at VIT Bhopal.
+const aboutContent = `Hello! I'm Manjiri Gawali, a passionate Software Developer and Computer Science student specializing in Health Informatics at VIT Bhopal.
 
 Currently working as a Trainee Software Developer at Eddy Tools Tech Solution.
 
@@ -99,7 +99,7 @@ export default function HomePage() {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="text-xl md:text-2xl text-primary font-semibold mb-2"
             >
-              Full Stack Developer
+              Software Developer
             </motion.p>
 
             <motion.p
