@@ -14,9 +14,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Manjiri Gawali | Full Stack Developer",
+  title: "Manjiri Gawali | Software Developer",
   description:
-    "Portfolio of Manjiri Gawali - Full Stack Developer & Health Informatics Student at VIT Bhopal University",
+    "Portfolio of Manjiri Gawali - Software Developer & Health Informatics Student at VIT Bhopal University",
   generator: "v0.app",
   icons: {
     icon: [

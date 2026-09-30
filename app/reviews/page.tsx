@@ -57,7 +57,7 @@ const sampleReviews: Review[] = [
 ];
 
 export default function ReviewsPage() {
-  const [reviews, setReviews] = useState<Review[]>(sampleReviews);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -85,6 +85,7 @@ export default function ReviewsPage() {
     if (firebaseConfigured) {
       loadReviews();
     } else {
+      setReviews(sampleReviews);
       setIsLoading(false);
     }
   }, []);
@@ -92,9 +93,7 @@ export default function ReviewsPage() {
   const loadReviews = async () => {
     setIsLoading(true);
     const fetchedReviews = await getReviews();
-    if (fetchedReviews.length > 0) {
-      setReviews(fetchedReviews);
-    }
+    setReviews(fetchedReviews);
     setIsLoading(false);
   };
 
@@ -485,6 +484,10 @@ export default function ReviewsPage() {
                     className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full"
                   />
                 </div>
+              ) : reviews.length === 0 ? (
+                <p className="py-8 text-center text-muted-foreground">
+                  No reviews yet.
+                </p>
               ) : (
                 <StaggerContainer className="space-y-4">
                   {reviews.map((review) => (
