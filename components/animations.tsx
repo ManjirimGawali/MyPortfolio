@@ -53,7 +53,7 @@ export function HoverCard({ children, className = "" }: HoverCardProps) {
   return (
     <motion.div
       whileHover={{
-        scale: 1.03,
+        y: -3,
         boxShadow: "0 10px 40px -10px rgba(111, 78, 55, 0.2)",
       }}
       whileTap={{ scale: 0.98 }}
