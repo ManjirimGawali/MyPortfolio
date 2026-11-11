@@ -2,126 +2,133 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, X, ChevronRight } from "lucide-react";
+import { ExternalLink, Github, X, ChevronRight, Download } from "lucide-react";
 import { PortfolioLayout } from "@/components/portfolio-layout";
 import { PageTransition, ScrollReveal, HoverCard } from "@/components/animations";
 import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/footer";
 import Image from "next/image";
 
+interface Project {
+  id: number;
+  name: string;
+  image: string;
+  description?: string;
+  fullDescription: string;
+  tech: string[];
+  color: string;
+  github: string;
+  live: string;
+  apk?: string;
+}
 
-const projects = [
+const projects: Project[] = [
   {
-  id: 1,
-  name: "Swasthya",
-  image: "images/swasthya.png",
-  fullDescription:
-    "An AI-powered medical assistant that helps users analyze medical reports and receive structured medical insights. The application includes secure authentication, report uploads, OCR-based text extraction, AI-powered analysis, cloud storage, and a scalable backend for processing medical information.",
-  tech: [
-    "Next.js",
-    "TypeScript",
-    "Tailwind CSS",
-    "Node.js",
-    "Express.js",
-    "Prisma",
-    "PostgreSQL",
-    "Firebase Auth",
-    "Google Document AI",
-    "Gemini API",
-    "Supabase"
-  ],
-  color: "from-emerald-500/20 to-teal-500/20",
-  github: "https://github.com/ManjirimGawali/Svastha-AI-Medical-Assistant",
-  live: "https://svastha-ai-medical-assistant.vercel.app/",
-},
-  
+    id: 1,
+    name: "Swasthya",
+    image: "/images/swasthya.png",
+    description:
+      "An AI-powered medical assistant that helps users analyze medical reports and receive structured medical insights.",
+    fullDescription:
+      "An AI-powered medical assistant that helps users analyze medical reports and receive structured medical insights. The application includes secure authentication, report uploads, OCR-based text extraction, AI-powered analysis, cloud storage, and a scalable backend for processing medical information.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "Prisma",
+      "PostgreSQL",
+      "Firebase Auth",
+      "Google Document AI",
+      "Gemini API",
+      "Supabase",
+    ],
+    color: "from-emerald-500/20 to-teal-500/20",
+    github: "https://github.com/ManjirimGawali/Svastha-AI-Medical-Assistant",
+    live: "https://svastha-ai-medical-assistant.vercel.app/",
+    apk: "https://drive.google.com/drive/folders/1toDkMelaet_gYcOw6128C6RbdX9UuUZt?usp=sharing",
+  },
   {
     id: 2,
     name: "Socialize",
-    image:"images/socializedark.png",
+    image: "/images/socializedark.png",
+    description:
+      "A full-featured social media application with authentication, image uploads, real-time notifications, likes, comments, and user profiles.",
     fullDescription:
       "A full-featured social media application built with modern web technologies. Features include user authentication, image uploads with UploadThing, real-time notifications, likes, comments, user profiles, and a responsive design. The application uses Prisma for database management and Clerk for secure authentication.",
-    tech: ["Next.js", "TypeScript", "Prisma", "Clerk", "UploadThing", "PostgreSQL"],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Prisma",
+      "Clerk",
+      "UploadThing",
+      "PostgreSQL",
+    ],
     color: "from-blue-500/20 to-indigo-500/20",
     github: "https://github.com/ManjirimGawali/Socialize",
     live: "https://socialize-black.vercel.app/",
   },
-  
- {
-  id: 3,
-  name: "Circle",
-  image: "images/circle.png",
-  fullDescription:
-    "A real-time chat application built with the MERN stack and TypeScript. Circle allows users to securely create accounts, search for other users, start one-on-one conversations, and exchange messages in real time. It includes JWT-based authentication, user profiles, profile picture uploads, online/offline status, and a responsive chat interface powered by Socket.IO.",
-  tech: [
-    "React",
-    "TypeScript",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
-    "Mongoose",
-    "Socket.IO",
-    "JWT",
-    "Tailwind CSS",
-    "Cloudinary"
-  ],
-  color: "from-pink-500/20 to-purple-500/20",
-  github: "https://github.com/ManjirimGawali/Circle-A-chat-App",
-  live: "#",
-},
+  {
+    id: 3,
+    name: "Circle",
+    image: "/images/circle.png",
+    description:
+      "A real-time chat application built with the MERN stack featuring instant messaging, online presence, and JWT authentication.",
+    fullDescription:
+      "A real-time chat application built with the MERN stack and TypeScript. Circle allows users to securely create accounts, search for other users, start one-on-one conversations, and exchange messages in real time. It includes JWT-based authentication, user profiles, profile picture uploads, online/offline status, and a responsive chat interface powered by Socket.IO.",
+    tech: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "Socket.IO",
+      "JWT",
+      "Tailwind CSS",
+      "Cloudinary",
+    ],
+    color: "from-pink-500/20 to-purple-500/20",
+    github: "https://github.com/ManjirimGawali/Circle-A-chat-App",
+    live: "#",
+  },
   {
     id: 4,
     name: "CEPV",
-    image:"/images/cepv.png",
+    image: "/images/cepv.png",
     description: "Chemical Equipment Parameter Visualizer",
     fullDescription:
       "A full-stack analytics platform for chemical equipment datasets with CSV upload, interactive charts, PDF report generation, authentication, and cross-platform support through web and desktop applications.",
-    tech: ["React",  "Django",  "DRF", "PyQt5","Chart.js","Tailwind CSS"],
+    tech: ["React", "Django", "DRF", "PyQt5", "Chart.js", "Tailwind CSS"],
     color: "from-[#F7E7DE] to-[#F3D8CC]",
-    github: "https://github.com/ManjirimGawali/CEPV-Chemical-Equipment-Parameter-Visualizer",
-    live: "cepv-visualizer.onrender.com",
+    github:
+      "https://github.com/ManjirimGawali/CEPV-Chemical-Equipment-Parameter-Visualizer",
+    live: "https://cepv-visualizer.onrender.com",
   },
-
-  // {
-  //   id: 5,
-  //   name: "Remote Health Monitoring System",
-  //   image:"images/healthcare.png",
-  //   description: "Real time health tracking using sensors and Flutter",
-  //   fullDescription:
-  //     "An IoT-based health monitoring system that tracks vital signs in real-time using ESP32 sensors. The Flutter mobile application displays health metrics including heart rate, temperature, and oxygen levels. Data is stored and synchronized using Firebase for seamless access across devices.",
-  //   tech: ["Flutter", "Firebase", "ESP32", "IoT"],
-  //   color: "from-emerald-500/20 to-teal-500/20",
-  //   github: "https://github.com/ManjirimGawali/Remote-health-monitoring",
-  //   live: "#",
-  // },
   {
-  id: 5,
-  name: "Meher Bakery",
-  image: "/images/meherhome.png",
-  description:
-    "A premium bakery website featuring a luxury pastel design, animated product showcases, speciality cakes, responsive layouts, and an elegant shopping experience.",
-
-  fullDescription:
-    "Meher Bakery is a modern bakery website built using Next.js and Tailwind CSS. The project focuses on creating a luxurious user experience through soft pastel color palettes, premium UI components, smooth animations, responsive design, product showcases, speciality cakes, contact forms, and interactive navigation. The website includes multiple pages such as Home, About, Products, Speciality Cakes, Contact Us, and Find Us, all designed with a consistent aesthetic and modern frontend practices.",
-
-  tech: [
-    "Next.js",
-    "TypeScript",
-    "Tailwind CSS",
-    "Framer Motion",
-    "Responsive Design",
-  ],
-
-  color: "from-pink-500/10 to-purple-500/10",
-
-  github: "https://github.com/ManjirimGawali/Bakery",
-
-  live: "YOUR_VERCEL_LINK",
-}
+    id: 5,
+    name: "Meher Bakery",
+    image: "/images/meherhome.png",
+    description:
+      "A premium bakery website featuring a luxury pastel design, animated product showcases, speciality cakes, responsive layouts, and an elegant shopping experience.",
+    fullDescription:
+      "Meher Bakery is a modern bakery website built using Next.js and Tailwind CSS. The project focuses on creating a luxurious user experience through soft pastel color palettes, premium UI components, smooth animations, responsive design, product showcases, speciality cakes, contact forms, and interactive navigation. The website includes multiple pages such as Home, About, Products, Speciality Cakes, Contact Us, and Find Us, all designed with a consistent aesthetic and modern frontend practices.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Responsive Design",
+    ],
+    color: "from-pink-500/10 to-purple-500/10",
+    github: "https://github.com/ManjirimGawali/Bakery",
+    live: "YOUR_VERCEL_LINK",
+  },
 ];
 
 export default function ProjectsPage() {
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
     <PortfolioLayout>
@@ -172,24 +179,26 @@ p-8`}
                   >
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                       <div className="flex-1">
-                       <h2 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">
-  {project.name}
-</h2>
+                        <h2 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">
+                          {project.name}
+                        </h2>
 
-{/* Project Image */}
-<div className="mb-6
+                        {/* Project Image */}
+                        <div
+                          className="mb-6
   overflow-hidden
   rounded-[24px]
   border
   border-[#F1E4ED]
   bg-white
-  shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
-  <Image
-    src={project.image}
-    alt={project.name}
-    width={1200}
-    height={700}
-    className="
+  shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
+                        >
+                          <Image
+                            src={project.image}
+                            alt={project.name}
+                            width={1200}
+                            height={700}
+                            className="
       w-full
       h-[250px]
       object-cover
@@ -197,12 +206,14 @@ p-8`}
       duration-500
       group-hover:scale-105
     "
-  />
-</div>
+                          />
+                        </div>
 
-<p className="text-muted-foreground mb-4 max-w-xl">
-  {project.description}
-</p>
+                        {project.description && (
+                          <p className="text-muted-foreground mb-4 max-w-xl">
+                            {project.description}
+                          </p>
+                        )}
                         <div className="flex flex-wrap gap-2">
                           {project.tech.map((tech) => (
                             <span
@@ -214,7 +225,25 @@ p-8`}
                           ))}
                         </div>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-3">
+                        {project.apk && (
+                          <Button
+                            asChild
+                            size="sm"
+                            variant="outline"
+                            className="rounded-full text-xs h-8 border-emerald-500/30 text-emerald-600 hover:bg-emerald-500/10"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <a
+                              href={project.apk}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Download className="w-3.5 h-3.5 mr-1.5" />
+                              APK
+                            </a>
+                          </Button>
+                        )}
                         <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
                           View Details
                         </span>
@@ -250,7 +279,9 @@ p-8`}
               >
                 <div className="flex items-start justify-between mb-6">
                   <div>
-                    <h2 className="text-2xl font-bold mb-2">{selectedProject.name}</h2>
+                    <h2 className="text-2xl font-bold mb-2">
+                      {selectedProject.name}
+                    </h2>
                   </div>
                   <button
                     onClick={() => setSelectedProject(null)}
@@ -280,31 +311,59 @@ p-8`}
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <Button asChild className="flex-1 rounded-full">
-                    <a
-                      href={selectedProject.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                <div className="flex flex-wrap gap-3">
+                  {selectedProject.github && selectedProject.github !== "#" && (
+                    <Button
+                      asChild
+                      className="flex-1 min-w-[130px] rounded-full"
                     >
-                      <Github className="w-4 h-4 mr-2" />
-                      View Code
-                    </a>
-                  </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="flex-1 rounded-full"
-                  >
-                    <a
-                      href={selectedProject.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        View Code
+                      </a>
+                    </Button>
+                  )}
+                  {selectedProject.live &&
+                    selectedProject.live !== "#" &&
+                    selectedProject.live !== "YOUR_VERCEL_LINK" && (
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="flex-1 min-w-[130px] rounded-full"
+                      >
+                        <a
+                          href={
+                            selectedProject.live.startsWith("http")
+                              ? selectedProject.live
+                              : `https://${selectedProject.live}`
+                          }
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          Live Demo
+                        </a>
+                      </Button>
+                    )}
+                  {selectedProject.apk && (
+                    <Button
+                      asChild
+                      className="flex-1 min-w-[130px] rounded-full bg-emerald-600 hover:bg-emerald-700 text-white"
                     >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </a>
-                  </Button>
+                      <a
+                        href={selectedProject.apk}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Download className="w-4 h-4 mr-2" />
+                        Download APK
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </motion.div>
             </motion.div>
