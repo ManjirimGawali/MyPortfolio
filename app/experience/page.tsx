@@ -1,20 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Building2, Users, Calendar, ChevronRight } from "lucide-react";
+import { Building2, Users, Calendar, ChevronRight, MapPin } from "lucide-react";
 import { PortfolioLayout } from "@/components/portfolio-layout";
 import { PageTransition, ScrollReveal, HoverCard } from "@/components/animations";
 import { Footer } from "@/components/footer";
 
-const experiences = [
+interface Experience {
+  id: number;
+  type: "work" | "organization";
+  company: string;
+  position: string;
+  duration: string;
+  location?: string;
+  description: string;
+  responsibilities: string[];
+  current: boolean;
+}
+
+const experiences: Experience[] = [
   {
     id: 1,
     type: "work",
+    company: "QuotesMill",
+    position: "Freelance Full-Stack Developer",
+    duration: "Aug 2026 - Present",
+    location: "Remote",
+    description:
+      "Built the company website end-to-end and engineered an intelligent multi-language WhatsApp AI agent for quotation generation and vendor operations.",
+    responsibilities: [
+      "Built the company website end-to-end with React.js and Node.js, with 5+ reusable components, 5+ responsive pages, and user journeys designed for easy navigation and conversion.",
+      "Built a WhatsApp AI agent that detects customer intent, confirms requirements, gets vendor pricing, and sends quotations in Hindi, Hinglish and English; negotiation redirects the customer to the vendor, and confirmation shares the vendor’s bank details for payment.",
+      "Implemented automated follow-ups for unresponsive customers and payment reminders, reducing manual chasing by vendors.",
+    ],
+    current: true,
+  },
+  {
+    id: 2,
+    type: "work",
     company: "Eddy Tools Tech Solution",
     position: "Trainee Software Developer",
-    duration: "May 2026 - Present",
+    duration: "May 2026 - Aug 2026",
     description:
-      "Working on building scalable web applications and leading frontend development initiatives.",
+      "Worked on building scalable web applications and leading frontend development initiatives.",
     responsibilities: [
       "Lead Funnel Pages development",
       "Create Landing Pages",
@@ -22,22 +50,22 @@ const experiences = [
       "Git Collaboration workflows",
       "Sprint Planning sessions",
     ],
-    current: true,
+    current: false,
   },
   {
-    id: 2,
+    id: 3,
     type: "organization",
     company: "Edu4U Club",
     position: "Design Team Member",
-    duration: "2024 - Present",
+    duration: "2024 - 2026",
     description:
-      "Contributing to the design team by creating visual content and improving user experiences.",
+      "Contributed to the design team by creating visual content and improving user experiences.",
     responsibilities: [
       "Design promotional materials",
       "Create social media graphics",
       "Collaborate on event branding",
     ],
-    current: true,
+    current: false,
   },
 ];
 
@@ -121,11 +149,19 @@ export default function ExperiencePage() {
                               {exp.position}
                             </p>
                           </div>
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <Calendar className="w-4 h-4" />
-                            {exp.duration}
+                          <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+                            <div className="flex items-center gap-1.5">
+                              <Calendar className="w-4 h-4" />
+                              <span>{exp.duration}</span>
+                            </div>
+                            {exp.location && (
+                              <div className="flex items-center gap-1.5">
+                                <MapPin className="w-4 h-4" />
+                                <span>{exp.location}</span>
+                              </div>
+                            )}
                             {exp.current && (
-                              <span className="ml-2 px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">
+                              <span className="px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full">
                                 Current
                               </span>
                             )}
@@ -144,10 +180,10 @@ export default function ExperiencePage() {
                             {exp.responsibilities.map((resp, i) => (
                               <li
                                 key={i}
-                                className="flex items-center gap-3 text-sm text-muted-foreground"
+                                className="flex items-start gap-3 text-sm text-muted-foreground"
                               >
-                                <ChevronRight className="w-4 h-4 text-primary flex-shrink-0" />
-                                {resp}
+                                <ChevronRight className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                                <span>{resp}</span>
                               </li>
                             ))}
                           </ul>

@@ -56,7 +56,7 @@ const stats = [
 
 const aboutContent = `Hello! I'm Manjiri Gawali, a passionate Software Developer and Computer Science student specializing in Health Informatics at VIT Bhopal.
 
-Currently working as a Trainee Software Developer at Eddy Tools Tech Solution.
+Currently working as a Freelance Full-Stack Developer at QuotesMill.
 
 Passionate about AI, Flutter, Full Stack Development, healthcare systems and scalable products.`;
 
