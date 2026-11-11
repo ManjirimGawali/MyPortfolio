@@ -17,7 +17,19 @@ export const metadata: Metadata = {
   title: "Manjiri Gawali | Software Developer",
   description:
     "Portfolio of Manjiri Gawali - Software Developer & Health Informatics Student at VIT Bhopal University",
-  generator: "v0.app",
+  metadataBase: new URL("https://my-portfolio-lovat-rho-11.vercel.app"),
+  openGraph: {
+    title: "Manjiri Gawali | Software Developer",
+    description:
+      "Portfolio of Manjiri Gawali - Software Developer & Health Informatics Student at VIT Bhopal University",
+    type: "website",
+    images: [{ url: "/images/manjiriphoto.jpg", alt: "Manjiri Gawali" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "Manjiri Gawali | Software Developer",
+    images: ["/images/manjiriphoto.jpg"],
+  },
   icons: {
     icon: [
       {
