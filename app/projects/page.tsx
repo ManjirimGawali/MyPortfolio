@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, X, ChevronRight, Download } from "lucide-react";
+import { ExternalLink, Github, X, ChevronRight, Download, Star } from "lucide-react";
 import { PortfolioLayout } from "@/components/portfolio-layout";
 import { PageTransition, ScrollReveal, HoverCard } from "@/components/animations";
 import { Button } from "@/components/ui/button";
@@ -21,9 +21,70 @@ interface Project {
   live: string;
   apk?: string;
   highlights?: string[];
+  featured?: boolean;
+  links?: { label: string; url: string }[];
+  gallery?: { src: string; caption: string }[];
 }
 
 const projects: Project[] = [
+  {
+    id: 9,
+    featured: true,
+    name: "DropLine – Last-Mile Delivery Platform",
+    image: "/images/dropline.jpg",
+    description:
+      "A complete last-mile delivery system: a React Native driver app, an Express + TypeScript backend, and a live dispatcher dashboard, built offline-first with exactly-once sync.",
+    fullDescription:
+      "DropLine is a last-mile delivery platform with three parts: a React Native (Expo) driver app, an Express + TypeScript backend the app syncs with, and a dispatcher website to create, assign and audit deliveries on a live map. The focus is on the hard parts: background location, offline-first sync, and exactly-once delivery of every update.",
+    highlights: [
+      "Offline-first sync: every action goes into an SQLite outbox with idempotency keys, strict ordering and exponential back-off with jitter. Results are exactly-once, proven by tests under a 30% server failure rate.",
+      "Background location every 10 s with the screen locked, using an Android foreground service and a heartbeat so dispatch never sees a gap over 30 s. Tracking switches to a lighter idle mode between tasks.",
+      "One delivery state machine shared by the app and the server, with a 100 m geofence check, plus proof of delivery: an in-app camera photo stamped with time and GPS that uploads later if offline.",
+      "Live dispatcher dashboard over WebSocket with a map, task timelines, logs and location-gap reports, plus driver management, attendance punch-in and OTP for critical deliveries.",
+      "English and Arabic with full right-to-left layout, FCM push notifications, OpenStreetMap maps with no API key, and 215 automated tests (97 backend + 118 app).",
+    ],
+    tech: [
+      "React Native (Expo)",
+      "TypeScript",
+      "expo-router",
+      "SQLite",
+      "Node.js",
+      "Express 5",
+      "Kysely",
+      "Supabase Postgres",
+      "React 19 (Vite)",
+      "TanStack Query",
+      "Leaflet + MapLibre",
+      "WebSocket",
+      "Firebase (FCM)",
+      "Jest",
+    ],
+    color: "from-yellow-400/20 to-amber-500/20",
+    github: "https://github.com/ManjirimGawali/DropLine-Delivery",
+    live: "https://dropline-delivery-product-demo.vercel.app/",
+    apk: "https://drive.google.com/drive/folders/1WlRTcwTaHFHEQR0bUm2sb5hTn7HkWkTM?usp=sharing",
+    links: [
+      {
+        label: "Dispatcher Dashboard",
+        url: "https://drop-line-delivery-dashboard.vercel.app/",
+      },
+      {
+        label: "Backend API",
+        url: "https://dropline-delivery-backend.onrender.com/health",
+      },
+    ],
+    gallery: [
+      { src: "/images/dropline/04-attendance.webp", caption: "Punch in" },
+      { src: "/images/dropline/09-home.webp", caption: "Home, on shift" },
+      { src: "/images/dropline/19-new-task-drawer.webp", caption: "New task" },
+      { src: "/images/dropline/21-step-1.webp", caption: "Head to pickup" },
+      { src: "/images/dropline/23-step-2.webp", caption: "Collect the order" },
+      { src: "/images/dropline/26-at-the-door.webp", caption: "At the door" },
+      { src: "/images/dropline/28-take-photo.webp", caption: "Proof of delivery" },
+      { src: "/images/dropline/30-delivered.webp", caption: "Delivered" },
+      { src: "/images/dropline/13-language.webp", caption: "English / Arabic" },
+    ],
+  },
   {
     id: 6,
     name: "Parcel Reader – AI Shipment Data Extraction",
@@ -247,7 +308,7 @@ overflow-hidden
 rounded-[32px]
 bg-white
 border
-border-[#F3E8EF]
+${project.featured ? "border-primary/40 ring-2 ring-primary/15" : "border-[#F3E8EF]"}
 shadow-[0_10px_40px_rgba(0,0,0,0.06)]
 hover:shadow-[0_20px_60px_rgba(0,0,0,0.10)]
 transition-all
@@ -261,6 +322,12 @@ p-8`}
                   >
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                       <div className="flex-1">
+                        {project.featured && (
+                          <span className="inline-flex items-center gap-1.5 mb-3 px-3 py-1 text-xs font-semibold rounded-full bg-primary text-primary-foreground">
+                            <Star className="w-3.5 h-3.5 fill-current" />
+                            Featured Project
+                          </span>
+                        )}
                         <h2 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">
                           {project.name}
                         </h2>
@@ -392,6 +459,41 @@ p-8`}
                     </ul>
                   )}
 
+                {selectedProject.gallery &&
+                  selectedProject.gallery.length > 0 && (
+                    <div className="mb-8">
+                      <h3 className="text-sm font-semibold text-foreground mb-3">
+                        Screenshots
+                      </h3>
+                      <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory">
+                        {selectedProject.gallery.map((shot) => (
+                          <figure
+                            key={shot.src}
+                            className="shrink-0 w-32 sm:w-36 snap-start"
+                          >
+                            <a
+                              href={shot.src}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Image
+                                src={shot.src}
+                                alt={shot.caption}
+                                width={720}
+                                height={1605}
+                                loading="lazy"
+                                className="w-full h-auto rounded-xl border border-border"
+                              />
+                            </a>
+                            <figcaption className="mt-1.5 text-xs text-center text-muted-foreground">
+                              {shot.caption}
+                            </figcaption>
+                          </figure>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                 <div className="mb-8">
                   <h3 className="text-sm font-semibold text-foreground mb-3">
                     Technologies Used
@@ -461,6 +563,19 @@ p-8`}
                       </a>
                     </Button>
                   )}
+                  {selectedProject.links?.map((link) => (
+                    <Button
+                      key={link.url}
+                      asChild
+                      variant="outline"
+                      className="flex-1 min-w-[130px] rounded-full"
+                    >
+                      <a href={link.url} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        {link.label}
+                      </a>
+                    </Button>
+                  ))}
                 </div>
               </motion.div>
             </motion.div>
