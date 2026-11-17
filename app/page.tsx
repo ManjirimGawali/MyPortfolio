@@ -49,6 +49,7 @@ const quickActions = [
 
 const stats = [
   { value: "8.93", label: "CGPA" },
+  { value: "99.6%", label: "Class 10 Score" },
   { value: "150+", label: "DSA Problems" },
   { value: "5+", label: "Projects Built" },
   { value: "10+", label: "Development Sprints" },
@@ -158,7 +159,7 @@ export default function HomePage() {
               <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-center">
                 By The Numbers
               </h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {stats.map((stat) => (
                   <div
                     key={stat.label}

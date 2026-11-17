@@ -20,7 +20,7 @@ import Image from "next/image";
 const navItems = [
   { href: "/", label: "Home", icon: Home },
   { href: "/projects", label: "Projects", icon: FolderKanban },
-  { href: "/experience", label: "Experiences", icon: Briefcase },
+  { href: "/experience", label: "Experience & Education", icon: Briefcase },
   { href: "/tech-stack", label: "Tech Stack", icon: Code2 },
   { href: "/hobbies", label: "Hobbies", icon: Heart },
   { href: "/connect", label: "Connect", icon: Mail },
