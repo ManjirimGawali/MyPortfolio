@@ -20,9 +20,91 @@ interface Project {
   github: string;
   live: string;
   apk?: string;
+  highlights?: string[];
 }
 
 const projects: Project[] = [
+  {
+    id: 6,
+    name: "Parcel Reader – AI Shipment Data Extraction",
+    image: "/images/parcel-reader.png",
+    description:
+      "Converts bulk warehouse scanner images into CSV records with the AWB, weight and dimensions, plus a status flag for each image.",
+    fullDescription:
+      "Converts bulk warehouse scanner images into CSV records with the AWB, weight and dimensions, plus a status flag for each image.",
+    highlights: [
+      "A local vision model checks each frame first (empty belt, multiple parcels, hand in the way, label cut off), and OCR runs only on frames that pass.",
+      "Uses multi-view OCR voting (two passes must agree), adaptive binarisation, text rescaling and slashed-zero repair to read 8+ station overlay formats reliably.",
+      "Includes a web app and a CLI with a background queue that resumes after a restart, unit-tested parsers, and an evaluation run on 262 real test images.",
+    ],
+    tech: [
+      "Node.js",
+      "Express.js",
+      "React (Vite)",
+      "Ollama",
+      "Qwen2.5-VL 7B",
+      "Tesseract.js OCR",
+      "sharp",
+      "MongoDB (optional)",
+      "JSON file store",
+    ],
+    color: "from-amber-500/10 to-orange-500/10",
+    github: "https://github.com/ManjirimGawali/Case-study-01",
+    live: "",
+  },
+  {
+    id: 7,
+    name: "ECR Verifier – PF/ESIC Compliance Reconciliation",
+    image: "/images/ecr-verifier.png",
+    description:
+      "Checks each employee's PF and ESIC deductions in a vendor wagesheet against the deposit records (ECR PDFs) from EPFO and ESIC.",
+    fullDescription:
+      "Checks each employee's PF and ESIC deductions in a vendor wagesheet against the deposit records (ECR PDFs) from EPFO and ESIC.",
+    highlights: [
+      "Reads the PDFs by text position and confirms every parse against the totals printed on the ECR, so a partial read can't pass unnoticed.",
+      "Uses rule-based name matching tuned for Indian names (spelling variants, word order, abbreviations, Mr/Smt) and allows a ±₹1 rounding difference on amounts.",
+      "Produces a colour-coded Excel audit report and was 100% accurate on 16,000 verdicts (8,000 employees, 370+ PDF pages) in about 3 seconds.",
+    ],
+    tech: [
+      "Node.js",
+      "Express.js",
+      "React (Vite)",
+      "pdfjs-dist",
+      "ExcelJS",
+      "MongoDB (optional)",
+      "JSON file store",
+    ],
+    color: "from-blue-500/10 to-sky-500/10",
+    github: "https://github.com/ManjirimGawali/Case-study-2",
+    live: "",
+  },
+  {
+    id: 8,
+    name: "FC P&L Monitor & Alert Digest",
+    image: "/images/fc-pnl-monitor.png",
+    description:
+      "Computes daily CM1 and CM2 margins and each cost line as a % of revenue for every fulfilment centre, and colour-codes each day against target ranges.",
+    fullDescription:
+      "Computes daily CM1 and CM2 margins and each cost line as a % of revenue for every fulfilment centre, and colour-codes each day against target ranges.",
+    highlights: [
+      "Ranks problems by rupee impact and works out, against a 14-day baseline, whether a breach came from overspending or from low revenue.",
+      "Emails each FC manager a colour-coded daily digest and shows every FC's status on a central dashboard with trend charts and manager overrides.",
+      "The optional AI model only rewrites the wording, and a guardrail rejects its text if any number is wrong. Validated on 18,250 FC-days with zero missed or false flags.",
+    ],
+    tech: [
+      "Node.js",
+      "Express.js",
+      "React (Vite)",
+      "MongoDB (optional)",
+      "Ollama (optional)",
+      "Nodemailer/SMTP",
+      "Slack webhooks",
+      "ExcelJS",
+    ],
+    color: "from-emerald-500/10 to-green-500/10",
+    github: "https://github.com/ManjirimGawali/Case-study-3",
+    live: "",
+  },
   {
     id: 1,
     name: "Swasthya",
@@ -294,6 +376,21 @@ p-8`}
                 <p className="text-muted-foreground leading-relaxed mb-6">
                   {selectedProject.fullDescription}
                 </p>
+
+                {selectedProject.highlights &&
+                  selectedProject.highlights.length > 0 && (
+                    <ul className="mb-6 space-y-3">
+                      {selectedProject.highlights.map((point) => (
+                        <li
+                          key={point}
+                          className="flex gap-3 text-muted-foreground leading-relaxed"
+                        >
+                          <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
                 <div className="mb-8">
                   <h3 className="text-sm font-semibold text-foreground mb-3">
